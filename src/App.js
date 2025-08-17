@@ -1,25 +1,34 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Navbar from "./components/Navbar";
-import Home from "./components/Home";
-import TodoApp from "./components/TodoApp";
-import WeatherApp from "./components/WeatherApp";
-import GitHubDashboard from "./components/GitHubDashboard";
-import "./App.css";
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { ThemeProvider } from './context/ThemeContext';
+import Navbar from './components/layout/Navbar';
+import Footer from './components/layout/Footer';
+import Home from './pages/Home';
+import About from './pages/About';
+import Projects from './pages/Projects';
+import Contact from './pages/Contact';
+import Chatbot from './components/Chatbot';
+import './App.css';
 
 function App() {
   return (
-    <Router>
-      <Navbar />
-      <div className="app-container">
-        <Routes>
-          <Route path="/" element={<Home/>} />
-          <Route path="/todo" element={<TodoApp/>} />
-          <Route path="/weather" element={<WeatherApp/>} />
-          <Route path="/github" element={<GitHubDashboard/>} />
-        </Routes>
-      </div>
-    </Router>
+    <ThemeProvider>
+      <Router>
+        <div className="app">
+          <Navbar />
+          <main className="main-content">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/projects" element={<Projects />} />
+              <Route path="/contact" element={<Contact />} />
+            </Routes>
+          </main>
+          <Footer />
+          <Chatbot />
+        </div>
+      </Router>
+    </ThemeProvider>
   );
 }
 
