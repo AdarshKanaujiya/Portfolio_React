@@ -1,0 +1,23 @@
+/* Home Page Styles */
+.home {
+  width: 100%;
+  min-height: 100vh;
+  position: relative; /* Important for Personal Assistant positioning */
+}
+
+.home section {
+  width: 100%;
+  scroll-margin-top: 80px; /* Offset for fixed navbar */
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Smooth transitions between sections */
+@media (prefers-reduced-motion: no-preference) {
+  .home section {
+    scroll-behavior: smooth;
+  }
+}

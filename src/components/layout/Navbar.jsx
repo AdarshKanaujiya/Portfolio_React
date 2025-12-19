@@ -16,21 +16,12 @@ const Navbar = () => {
   }, []);
 
   const navItems = [
-    { label: 'Home', href: '#hero' },
+    { label: 'Home', href: '#' },
     { label: 'About', href: '#about' },
     { label: 'Projects', href: '#projects' },
     { label: 'Skills', href: '#skills' },
     { label: 'Contact', href: '#contact' },
   ];
-
-  const handleNavClick = (e, href) => {
-    e.preventDefault();
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      setIsMobileMenuOpen(false);
-    }
-  };
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -94,7 +85,6 @@ const Navbar = () => {
               <motion.a
                 href={item.href}
                 className="nav-link"
-                onClick={(e) => handleNavClick(e, item.href)}
                 whileHover={{ y: -2 }}
                 whileTap={{ y: 0 }}
               >
@@ -112,7 +102,6 @@ const Navbar = () => {
         {/* CTA Button */}
         <motion.button
           className="nav-cta"
-          onClick={(e) => handleNavClick(e, '#contact')}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
@@ -164,7 +153,7 @@ const Navbar = () => {
               href={item.href}
               className="mobile-nav-link"
               variants={itemVariants}
-              onClick={(e) => handleNavClick(e, item.href)}
+              onClick={() => setIsMobileMenuOpen(false)}
             >
               {item.label}
             </motion.a>
@@ -176,5 +165,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
-

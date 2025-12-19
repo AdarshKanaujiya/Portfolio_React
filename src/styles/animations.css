@@ -1,0 +1,241 @@
+/* Advanced Animation Utilities */
+
+/* Floating Animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Pulse Animation */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(255, 107, 53, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(255, 107, 53, 0);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s infinite;
+}
+
+/* Shimmer Animation */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  background-size: 1000px 100%;
+}
+
+/* Slide In Animation */
+@keyframes slide-in-right {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 0.6s ease-out;
+}
+
+/* Fade In Up Animation */
+@keyframes fade-in-up {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out;
+}
+
+/* Rotate Animation */
+@keyframes rotate-continuous {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-rotate {
+  animation: rotate-continuous 20s linear infinite;
+}
+
+/* Scale Bounce Animation */
+@keyframes scale-bounce {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.animate-scale-bounce {
+  animation: scale-bounce 2s ease-in-out infinite;
+}
+
+/* Glow Animation */
+@keyframes glow {
+  0%, 100% {
+    text-shadow: 0 0 10px rgba(255, 107, 53, 0.3);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(255, 107, 53, 0.8);
+  }
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+/* Border Trace Animation */
+@keyframes border-trace {
+  0% {
+    border-color: transparent;
+  }
+  100% {
+    border-color: var(--accent-color);
+  }
+}
+
+.animate-border-trace {
+  animation: border-trace 0.6s ease-out forwards;
+}
+
+/* Blur In Animation */
+@keyframes blur-in {
+  from {
+    filter: blur(10px);
+    opacity: 0;
+  }
+  to {
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+
+.animate-blur-in {
+  animation: blur-in 0.6s ease-out;
+}
+
+/* Text Appear Animation */
+@keyframes text-appear {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+.animate-text-appear {
+  animation: text-appear 0.8s ease-out;
+}
+
+/* Wave Animation */
+@keyframes wave {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-wave {
+  animation: wave 1s ease-in-out infinite;
+}
+
+/* Flip Animation */
+@keyframes flip {
+  from {
+    transform: rotateY(0);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
+
+.animate-flip {
+  animation: flip 0.6s ease-out;
+  transform-style: preserve-3d;
+}
+
+/* Utility Delays */
+.delay-100 {
+  animation-delay: 0.1s;
+}
+
+.delay-200 {
+  animation-delay: 0.2s;
+}
+
+.delay-300 {
+  animation-delay: 0.3s;
+}
+
+.delay-500 {
+  animation-delay: 0.5s;
+}
+
+.delay-700 {
+  animation-delay: 0.7s;
+}
+
+.delay-1000 {
+  animation-delay: 1s;
+}
+
+/* Responsive Animations */
+@media (prefers-reduced-motion: reduce) {
+  [class*="animate-"] {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Simplify animations on mobile */
+  .animate-float {
+    animation: none;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 3s infinite;
+  }
+}

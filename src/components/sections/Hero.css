@@ -1,0 +1,326 @@
+/* Hero Section Styles */
+.hero-section {
+  position: relative;
+  min-height: 120vh;
+  max-width: 5000px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-2xl) var(--spacing-xl) var(--spacing-3xl) var(--spacing-xl);
+  overflow: visible;
+}
+
+.hero-bg-element {
+  position: absolute;
+  top: -20%;
+  right: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 107, 53, 0.1) 0%,
+    rgba(255, 107, 53, 0) 70%
+  );
+  border-radius: 50%;
+  filter: blur(60px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 1000px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.hero-heading {
+  text-align: center;
+}
+
+/* ===============================
+   Heading Container
+================================ */
+.hero-title {
+  position: relative;
+  height: 1.4em;
+  text-align: center;
+}
+/* Align heading text correctly */
+.hero-title .typewriter {
+  top: 0;
+}
+/* ===============================
+   Subtitle Container
+================================ */
+.hero-subtitle {
+  position: relative;
+  height: 3.5em;
+  margin: 0 auto 1rem auto;
+  text-align: center;
+  max-width: 100%;
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+
+/* ===============================
+   Shared Typewriter Base
+================================ */
+.typewriter {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  overflow: hidden;
+  white-space: nowrap;
+  width: 0;
+  /* border-right: 3px solid var(--accent-color); */
+}
+
+/* ===============================
+   Heading Animations
+================================ */
+.heading-line-1 {
+  animation: heading-1 6s steps(20, end) infinite;
+}
+
+.heading-line-2 {
+  animation: heading-2 6s steps(22, end) infinite;
+}
+
+@keyframes heading-1 {
+  0%   { width: 0; }
+  20%  { width: 19ch; }
+  35%  { width: 19ch; }
+  55%  { width: 0; }
+  100% { width: 0; }
+}
+
+@keyframes heading-2 {
+  0%   { width: 0; }
+  55%  { width: 0; }
+  75%  { width: 22ch; }
+  90%  { width: 22ch; }
+  100% { width: 0; }
+}
+
+/* ===============================
+   Subtitle Animations
+================================ */
+.subtitle-line-1 {
+  animation: subtitle-1 10s steps(90, end) infinite;
+}
+
+.subtitle-line-2 {
+  animation: subtitle-2 10s steps(45, end) infinite;
+}
+
+@keyframes subtitle-1 {
+  0%   { width: 0; }
+  20%  { width: 72ch; }
+  35%  { width: 72ch; }
+  55%  { width: 0; }
+  100% { width: 0; }
+}
+
+@keyframes subtitle-2 {
+  0%   { width: 0; }
+  55%  { width: 0; }
+  75%  { width: 45ch; }
+  90%  { width: 45ch; }
+  100% { width: 0; }
+}
+
+/* ===============================
+   Gradient Text Fix
+================================ */
+.hero-title .gradient-text {
+  display: inline-block;
+}
+
+
+/* Glassmorphic Card */
+.hero-card {
+  margin: var(--spacing-md) 0;
+  padding: var(--spacing-lg);
+}
+
+.hero-card-content {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-md);
+  align-items: center;
+  justify-items: center;
+}
+
+.hero-stat {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  text-align: center;
+}
+
+.stat-number {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+  color: var(--accent-color);
+}
+
+.stat-label {
+  font-size: 0.875rem;
+  color: var(--text-tertiary);
+  letter-spacing: 0.05em;
+}
+
+.divider {
+  width: 1px;
+  height: 40px;
+  background: var(--border-color);
+  display: none;
+}
+
+.hero-card-content > :nth-child(2),
+.hero-card-content > :nth-child(4) {
+  display: block;
+}
+
+/* CTA Buttons */
+.hero-cta {
+  display: flex;
+  gap: var(--spacing-md);
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: var(--spacing-lg);
+}
+
+.btn {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: var(--radius-lg);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  transition: all 0.3s ease;
+  letter-spacing: 0.05em;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent-color), rgba(255, 107, 53, 0.7));
+  color: white;
+  box-shadow: 0 10px 30px rgba(255, 107, 53, 0.2);
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.btn-primary:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--text-primary);
+  border: 2px solid var(--border-color);
+  padding: calc(0.75rem - 2px) calc(1.5rem - 2px);
+}
+
+.btn-secondary:hover {
+  border-color: var(--accent-color);
+  background: var(--accent-light);
+}
+
+.btn-arrow {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s ease;
+}
+
+.btn:hover .btn-arrow {
+  transform: translateX(4px);
+}
+
+/* Scroll Indicator */
+.scroll-indicator {
+  position: absolute;
+  bottom: var(--spacing-2xl);
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--accent-color);
+  cursor: pointer;
+}
+
+.scroll-indicator svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero-section {
+    min-height: 130vh;
+    padding: var(--spacing-xl) var(--spacing-md);
+    padding-top: 120px;
+  }
+
+  .hero-title {
+    font-size: clamp(1.75rem, 5vw, 2.5rem);
+  }
+
+  .hero-card-content {
+    grid-template-columns: 1fr;
+  }
+
+  .divider {
+    display: none !important;
+  }
+
+  .hero-cta {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-bg-element {
+    width: 300px;
+    height: 300px;
+  }
+
+  .hero-cta {
+    gap: var(--spacing-sm);
+  }
+
+  .btn {
+    padding: 0.625rem 1.25rem;
+    font-size: 0.875rem;
+  }
+
+  .btn-arrow {
+    width: 18px;
+    height: 18px;
+  }
+}

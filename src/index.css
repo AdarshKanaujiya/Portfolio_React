@@ -1,3 +1,6 @@
+/* Import Global Styles */
+@import './styles/globals.css';
+
 :root {
   --bg-color: #ffffff;
   --text-color: #333333;
