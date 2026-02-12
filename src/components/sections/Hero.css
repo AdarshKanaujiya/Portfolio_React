@@ -142,16 +142,41 @@
 
 /* Glassmorphic Card */
 .hero-card {
+  position: relative;
   margin: var(--spacing-md) 0;
   padding: var(--spacing-lg);
+  overflow: hidden;
+  --mask-x: -999px;
+  --mask-y: -999px;
+  --mask-size: 180px;
 }
 
 .hero-card-content {
+  position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--spacing-md);
   align-items: center;
   justify-items: center;
+  -webkit-mask-image: radial-gradient(
+    circle var(--mask-size) at var(--mask-x) var(--mask-y),
+    transparent 0%,
+    transparent 60%,
+    #fff 62%
+  );
+  mask-image: radial-gradient(
+    circle var(--mask-size) at var(--mask-x) var(--mask-y),
+    transparent 0%,
+    transparent 60%,
+    #fff 62%
+  );
+}
+
+.hero-leetcode {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
 }
 
 .hero-stat {
@@ -314,6 +339,10 @@
     grid-template-columns: 1fr;
   }
 
+  .hero-leetcode {
+    display: none;
+  }
+
   .divider {
     display: none !important;
   }
@@ -358,5 +387,109 @@
   .btn-arrow {
     width: 18px;
     height: 18px;
+  }
+}
+
+
+/* ===============================
+   LeetCode Spotlight (Mask Effect)
+================================ */
+.leetcode-spotlight {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  margin: 2rem auto 0;
+  padding: 2rem 1rem;
+  border-radius: var(--radius-lg);
+  cursor: none; /* Hide cursor to show custom effect */
+  overflow: hidden;
+  
+  /* Variables for mouse position */
+  --mouse-x: -200px;
+  --mouse-y: -200px;
+  
+  /* Subtle border to indicate interactive area */
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.spotlight-text {
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  font-weight: 600;
+  text-align: center;
+  line-height: 1.6;
+  padding: 0 1rem;
+  word-spacing: 0.2em;
+  
+  /* Prevent text selection for better interaction */
+  user-select: none;
+  pointer-events: none;
+}
+
+/* Layer 1: Ghost Text (The backdrop) */
+.ghost-layer {
+  color: rgba(255, 255, 255, 0.15);
+  filter: blur(2px);
+}
+
+/* Layer 2: Revealed Text (The mask) */
+.reveal-layer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  
+  color: #fff; /* Clear white text */
+  
+  /* The Mask Magic */
+  -webkit-mask-image: radial-gradient(
+    circle 150px at var(--mouse-x) var(--mouse-y),
+    black 0%,
+    transparent 100%
+  );
+  mask-image: radial-gradient(
+    circle 150px at var(--mouse-x) var(--mouse-y),
+    black 0%,
+    transparent 100%
+  );
+  
+  /* Smooth transition for the mask movement */
+  transition: mask-image 0.1s ease;
+}
+
+.spotlight-hint {
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.3);
+  letter-spacing: 0.05em;
+  pointer-events: none;
+}
+
+/* Mobile Fallback: Show text clearly without mask */
+@media (max-width: 768px) {
+  .leetcode-spotlight {
+    cursor: auto;
+    background: rgba(0, 0, 0, 0.2);
+  }
+  
+  .ghost-layer {
+    display: none;
+  }
+  
+  .reveal-layer {
+    position: relative;
+    transform: none;
+    top: 0;
+    left: 0;
+    color: rgba(255, 255, 255, 0.9);
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+  
+  .spotlight-hint {
+    display: none;
   }
 }

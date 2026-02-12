@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
 // import gsap from 'gsap';
 // import ScrollTrigger from 'gsap/ScrollTrigger';
@@ -8,6 +8,28 @@ import './About.css';
 
 const About = () => {
   // const sectionRef = useRef(null);
+  const maskRef = useRef(null);
+
+  const handlePointerMove = (event) => {
+    const el = maskRef.current;
+    if (!el) return;
+
+    const rect = el.getBoundingClientRect();
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+
+    // Set mask on container directly
+    el.parentElement.style.setProperty("--mask-x", `${x}px`);
+    el.parentElement.style.setProperty("--mask-y", `${y}px`);
+  };
+
+  const handlePointerLeave = () => {
+    const el = maskRef.current;
+    if (!el) return;
+
+    el.parentElement.style.setProperty("--mask-x", `-999px`);
+    el.parentElement.style.setProperty("--mask-y", `-999px`);
+  };
 
   const experience = [
     {
@@ -70,7 +92,7 @@ const About = () => {
   return (
     <section className="about-section">
       <div className="container">
-        {/* Intro */}
+        {/* Intro with Masked Image */}
         <motion.div
           className="about-intro"
           initial={{ opacity: 0, y: 20 }}
@@ -79,11 +101,41 @@ const About = () => {
           transition={{ duration: 0.6 }}
         >
           <h2 className="section-title">About Me</h2>
-          <p className="intro-text">
-            I'm a passionate frontend engineer and UI/UX designer with 5+ years of experience crafting elegant,
+
+          <p className="about-intro-text">
+            I'm a passionate Full Stack Developer with <span style={{color:"orange"}}>1.5+ years of experience</span> crafting elegant,
             high-performance digital experiences. My expertise spans modern web technologies, motion design,
             and creating meaningful user interactions that delight and engage.
           </p>
+          
+          {/* Layered Mask Container - Image behind, Text overlay */}
+          <div className="about-mask-container">
+            {/* Image Layer - Behind (absolute) */}
+            <div className="about-image-mask">
+              <img 
+                src="\personal pic.jpg" 
+                alt="Profile" 
+                className="mask-image"
+              />
+            </div>
+
+            {/* Text Layer - Overlay with mask (absolute) */}
+            <p className="intro-text">
+              I'm a passionate Full Stack Developer with <span style={{color:"orange"}}>1.5+ years of experience</span> crafting elegant,
+              high-performance digital experiences. My expertise spans modern web technologies, motion design,
+              and creating meaningful user interactions that delight and engage.
+            </p>
+
+            {/* Hover Overlay - Only over image area */}
+            <div
+              className="hover-overlay"
+              ref={maskRef}
+              onMouseMove={handlePointerMove}
+              onMouseLeave={handlePointerLeave}
+              onTouchMove={(event) => handlePointerMove(event.touches[0])}
+              onTouchEnd={handlePointerLeave}
+            />
+          </div>
         </motion.div>
 
         <div className="about-content">

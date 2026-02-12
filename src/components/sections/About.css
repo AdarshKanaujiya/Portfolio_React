@@ -9,16 +9,110 @@
 .about-intro {
   text-align: center;
   margin-bottom: var(--spacing-3xl);
-  max-width: 800px;
+  max-width: 900px;
   margin-left: auto;
   margin-right: auto;
 }
 
-.intro-text {
-  font-size: 1.1rem;
+.about-intro-text {
+  display: none;
+  margin: var(--spacing-lg) auto 0 auto;
+  max-width: 800px;
+  font-size: 1.05rem;
   color: var(--text-secondary);
   line-height: 1.8;
-  margin-top: var(--spacing-lg);
+}
+
+/* Masked Container - Layered absolute positioning */
+.about-mask-container {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  height: 400px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  --mask-x: -999px;
+  --mask-y: -999px;
+  --mask-size: 150px;
+}
+
+/* Image Layer - Behind (z-index: 1) - MASKED, reveals only in spotlight */
+.about-image-mask {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  
+  /* Image HIDDEN by default, reveals only in spotlight circle */
+  -webkit-mask-image: radial-gradient(
+    circle var(--mask-size) at var(--mask-x) var(--mask-y),
+    white 0%,
+    white 40%,
+    transparent 60%
+  );
+  mask-image: radial-gradient(
+    circle var(--mask-size) at var(--mask-x) var(--mask-y),
+    white 0%,
+    white 40%,
+    transparent 60%
+  );
+  
+  transition: mask-position 0.12s ease, -webkit-mask-position 0.12s ease;
+  will-change: mask-position;
+}
+
+.mask-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+/* Text Layer - Overlay (z-index: 2) - VISIBLE outside spotlight, HIDDEN in spotlight */
+.intro-text {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-2xl);
+  margin: 0;
+  
+  font-size: 1.1rem;
+  color: white;
+  line-height: 1.8;
+  text-align: center;
+  
+  background: transparent;
+  pointer-events: none;
+  
+  /* Inverse mask - HIDDEN in spotlight circle, VISIBLE outside */
+  -webkit-mask-image: radial-gradient(
+    circle var(--mask-size) at var(--mask-x) var(--mask-y),
+    transparent 0%,
+    transparent 40%,
+    white 60%
+  );
+  mask-image: radial-gradient(
+    circle var(--mask-size) at var(--mask-x) var(--mask-y),
+    transparent 0%,
+    transparent 40%,
+    white 60%
+  );
+  
+  transition: mask-position 0.12s ease, -webkit-mask-position 0.12s ease;
+  will-change: mask-position;
+}
+
+/* Hover Overlay - Full container, topmost layer */
+.hover-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  cursor: none;
+  pointer-events: auto;
 }
 
 .about-content {
@@ -144,11 +238,31 @@
     grid-template-columns: 1fr;
     gap: var(--spacing-2xl);
   }
+
+  .about-mask-container {
+    height: 350px;
+  }
 }
 
 @media (max-width: 768px) {
   .about-section {
     padding: var(--spacing-2xl) var(--spacing-md);
+  }
+
+  .about-intro {
+    max-width: 100%;
+  }
+
+  .about-mask-container {
+    display: none;
+  }
+
+  .about-intro-text {
+    display: block;
+  }
+
+  .intro-text {
+    font-size: 1rem;
   }
 
   .about-content {
@@ -181,7 +295,14 @@
   }
 
   .intro-text {
-    font-size: 1rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    padding: var(--spacing-lg);
+  }
+
+  .about-mask-container {
+    height: 280px;
+    --mask-size: 100px;
   }
 
   .timeline-title {

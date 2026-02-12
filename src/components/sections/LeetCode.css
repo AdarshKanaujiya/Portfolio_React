@@ -1,0 +1,253 @@
+/* LeetCode Mask Section
+.leetcode-section {
+  position: relative;
+  padding: var(--spacing-3xl) var(--spacing-xl);
+  background: var(--bg-secondary);
+}
+
+.leetcode-mask-card {
+  position: relative;
+  margin: var(--spacing-2xl) auto 0;
+  max-width: 760px;
+  min-height: 280px;
+  padding: var(--spacing-xl);
+  border-radius: var(--radius-xl);
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+  --mask-x: -999px;
+  --mask-y: -999px;
+  --mask-size: 220px;
+}
+
+.masked-backdrop,
+.masked-reveal {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  text-align: left;
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  line-height: 1.6;
+  letter-spacing: 0.02em;
+}
+
+.mask-line {
+  display: block;
+}
+
+.masked-backdrop {
+  color: rgba(255, 255, 255, 0.25);
+}
+
+.masked-reveal {
+  position: absolute;
+  inset: 0;
+  padding: var(--spacing-xl);
+  color: var(--accent-color);
+  pointer-events: none;
+  background: radial-gradient(
+    var(--mask-size) var(--mask-size) at var(--mask-x) var(--mask-y),
+    rgba(255, 107, 53, 0.4),
+    rgba(255, 107, 53, 0) 60%
+  );
+  -webkit-mask-image: radial-gradient(
+    var(--mask-size) var(--mask-size) at var(--mask-x) var(--mask-y),
+    #fff 0%,
+    transparent 60%
+  );
+  mask-image: radial-gradient(
+    var(--mask-size) var(--mask-size) at var(--mask-x) var(--mask-y),
+    #fff 0%,
+    transparent 60%
+  );
+}
+
+@media (max-width: 768px) {
+  .leetcode-section {
+    padding: var(--spacing-2xl) var(--spacing-md);
+  }
+
+  .leetcode-mask-card {
+    min-height: 240px;
+    padding: var(--spacing-lg);
+    --mask-size: 160px;
+  }
+
+  .masked-backdrop,
+  .masked-reveal {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+} */
+
+
+
+
+/* LeetCode Mask Section */
+.leetcode-section {
+  position: relative;
+  padding: var(--spacing-3xl) var(--spacing-xl);
+  background: var(--bg-secondary); /* Matches your site background */
+  overflow: hidden;
+}
+
+.leetcode-mask-card {
+  position: relative;
+  margin: 0 auto;
+  max-width: 900px;
+  min-height: 300px;
+  padding: var(--spacing-2xl);
+  border-radius: var(--radius-xl);
+  /* Dark background to make the text pop */
+  background: #0a0a0a; 
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  cursor: none; /* Hide default cursor for effect */
+  
+  /* CSS Variables for mouse position */
+  --mask-x: -200px;
+  --mask-y: -200px;
+  --mask-size: 200px;
+}
+
+.leetcode-mask-card--inline {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  max-width: 100%;
+  min-height: 0;
+  height: 100%;
+  padding: var(--spacing-lg) var(--spacing-xl);
+  background: transparent;
+  border: none;
+  cursor: none;
+  --mask-size: 160px;
+}
+
+/* Shared Text Styles */
+.masked-backdrop,
+.masked-reveal {
+  font-family: 'Inter', sans-serif; /* Ensure consistent font */
+  white-space: pre-line;
+  text-align: center;
+  font-size: clamp(1.8rem, 4vw, 3rem); /* Large text like the reference */
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+  
+  /* Critical for alignment */
+  width: 100%;
+  padding: var(--spacing-2xl);
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none; /* Let mouse events pass through to the card */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+/* Layer 1: The Blurred/Ghost Text (Background) */
+.masked-backdrop {
+  color: rgba(255, 255, 255, 0.1); /* Very faint */
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+/* Layer 2: The Clear Text (Foreground - Hidden by mask) */
+.masked-reveal {
+  color: #fff; /* Bright white text */
+  z-index: 2;
+  will-change: mask-position, background-position;
+  
+  /* Gradient following the cursor */
+  background: radial-gradient(
+    circle var(--mask-size) at var(--mask-x) var(--mask-y), 
+    rgba(255, 255, 255, 0.15), 
+    transparent 0
+  );
+  
+  /* The Mask Magic: Black = Visible, Transparent = Hidden */
+  -webkit-mask-image: radial-gradient(
+    circle var(--mask-size) at var(--mask-x) var(--mask-y), 
+    black 0%, 
+    transparent 100%
+  );
+  mask-image: radial-gradient(
+    circle var(--mask-size) at var(--mask-x) var(--mask-y), 
+    black 0%, 
+    transparent 100%
+  );
+  
+  /* Smooth transition for the mask position */
+  transition: mask-position 0.1s ease, -webkit-mask-position 0.1s ease;
+}
+
+.leetcode-mask-card--inline .masked-backdrop,
+.leetcode-mask-card--inline .masked-reveal {
+  text-align: left;
+  align-items: flex-start;
+  font-size: clamp(0.95rem, 1.8vw, 1.25rem);
+  line-height: 1.7;
+  padding: 0;
+  gap: 0.45rem;
+  /* max-width: 520px; */
+}
+
+.leetcode-mask-card--inline .masked-backdrop {
+  color: transparent;
+}
+
+.leetcode-mask-card--inline .masked-reveal {
+  color: #0b0b0b;
+  /* font-size: var(--mask-size); */
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  padding: 25px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.25);
+  background: radial-gradient(
+    circle var(--mask-size) at var(--mask-x) var(--mask-y),
+    rgba(255, 127, 0, 0.9),
+    rgba(255, 127, 0, 0.35) 35%,
+    rgba(255, 127, 0, 0) 65%
+  );
+  transition: mask-position 0.16s ease, -webkit-mask-position 0.16s ease, background-position 0.16s ease;
+}
+
+.leetcode-mask-card--inline .mask-line {
+  font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .leetcode-section {
+    padding: var(--spacing-2xl) var(--spacing-md);
+  }
+
+  .leetcode-mask-card {
+    min-height: 250px;
+    padding: var(--spacing-lg);
+    cursor: auto; /* Show cursor on mobile */
+  }
+
+  .masked-backdrop,
+  .masked-reveal {
+    font-size: 1.5rem;
+    padding: var(--spacing-lg);
+  }
+
+  /* On mobile, just show the text clearly without mask effect */
+  .masked-reveal {
+    -webkit-mask-image: none;
+    mask-image: none;
+    background: none;
+    color: #fff;
+  }
+  
+  .masked-backdrop {
+    display: none;
+  }
+}
