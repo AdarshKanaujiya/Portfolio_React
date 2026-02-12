@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
 import Home from './pages/Home';
+import PersonalAssistant from './components/PersonalAssistant';
 import './styles/globals.css';
 import './App.css';
 
@@ -15,6 +16,7 @@ function App() {
             <Route path="/" element={<Home />} />
           </Routes>
         </main>
+        <PersonalAssistant />
       </div>
     </Router>
   );

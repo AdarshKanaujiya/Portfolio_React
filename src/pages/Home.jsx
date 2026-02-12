@@ -7,14 +7,13 @@ import Skills from '../components/sections/Skills';
 import Projects from '../components/sections/Projects';
 import Contact from '../components/sections/Contact';
 import Footer from '../components/layout/Footer';
-import PersonalAssistant from '../components/PersonalAssistant';
 import './Home.css';
 
 const Home = () => {
   const [showLoader, setShowLoader] = useState(true);
 
   const handleLoaderComplete = () => {
-    console.log('✅ Loader completed, mounting Personal Assistant');
+    // console.log('✅ Loader completed, mounting Personal Assistant');
     setShowLoader(false);
   };
 
@@ -22,23 +21,17 @@ const Home = () => {
   useEffect(() => {
     if (!showLoader) return;
     const t = setTimeout(() => {
-      console.warn('⏱️ Loader fallback triggered (5s). Forcing content visible.');
+      // console.warn('⏱️ Loader fallback triggered (5s). Forcing content visible.');
       setShowLoader(false);
     }, 5000);
     return () => clearTimeout(t);
   }, [showLoader]);
-
-  console.log('🏠 Home rendering. PersonalAssistant component:', PersonalAssistant);
-  console.log('🏠 About to render PersonalAssistant...');
 
   return (
     <>
       <AnimatePresence>
         {showLoader && <Loader key="loader" onComplete={handleLoaderComplete} />}
       </AnimatePresence>
-
-      {/* Personal Assistant - ALWAYS ON for debug */}
-      <PersonalAssistant />
 
     
       <motion.main

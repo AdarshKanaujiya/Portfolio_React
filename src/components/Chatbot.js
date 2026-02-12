@@ -28,9 +28,9 @@ const Chatbot = () => {
     name: "Adarsh",
     role: "Full Stack Developer",
     skills: ["JavaScript", "React", "Node.js", "Python", "MongoDB", "CSS/Sass"],
-    experience: "3+ years of experience in web development",
-    location: "Bangalore, India",
-    projects: "Built 100+ projects including e-commerce platforms, weather apps, and todo applications",
+    experience: "2+ years of experience in web development",
+    location: "Mumbai, India",
+    projects: "Built 10+ projects including e-learning platforms & AI chatbots",
     education: "Bachelor's degree in Computer Science",
     interests: "Open source contribution, AI/ML, cloud computing"
   };
@@ -51,7 +51,7 @@ const Chatbot = () => {
     }
     
     if (lowerMessage.includes('contact') || lowerMessage.includes('reach')) {
-      return `You can reach Adarsh through the Contact page, or email him at adarsh@example.com. He's always open to discussing new opportunities!`;
+      return `You can reach Adarsh through the Contact page, or email him at adarshkanoujiya2004@gmail.com He's always open to discussing new opportunities!`;
     }
     
     if (lowerMessage.includes('hello') || lowerMessage.includes('hi')) {

@@ -211,8 +211,14 @@
   justify-content: center;
   color: var(--text-secondary);
   text-decoration: none;
-  font-size: 0;
+  font-size: 20px;
+  line-height: 1;
   transition: all 0.3s ease;
+}
+
+.social-link svg {
+  width: 20px;
+  height: 20px;
 }
 
 .social-link:hover {

@@ -11,37 +11,37 @@ const About = () => {
 
   const experience = [
     {
-      year: '2022 - Present',
-      role: 'Senior Frontend Engineer',
-      company: 'Tech Innovations',
-      description: 'Led development of high-performance web applications with focus on animations and UX.',
+      year: '2025 - Present',
+      role: 'Full Stack Developer',
+      company: 'Lunar Finis pvt ltd',
+      description: 'Currently working on building a cutting-edge fintech platform that leverages AI to provide personalized financial insights and investment recommendations.',
     },
     {
-      year: '2020 - 2022',
-      role: 'Frontend Developer',
-      company: 'Digital Solutions',
-      description: 'Developed responsive web applications using React and modern CSS techniques.',
+      year: '2025 - 2025',
+      role: 'Full Stack Developer',
+      company: 'SpiroEdu pvt ltd',
+      description: 'Developed E-learning platform for the Client CDAC, from buying the course till completion and issuing the certificates with proper security and optimization.',
     },
     {
-      year: '2018 - 2020',
+      year: '2024 - 2025',
       role: 'Junior Frontend Developer',
-      company: 'StartUp Lab',
-      description: 'Built user interfaces and contributed to full-stack web development.',
+      company: 'Sakec college',
+      description: 'Built first year mini project which helps students to visualize Gravity on differnt planets.',
     },
   ];
 
   const education = [
     {
-      year: '2018',
-      degree: 'Bachelor of Technology',
-      school: 'University of Technology',
+      year: '2023-2027',
+      degree: 'Bachelor of Technology CS',
+      school: 'Shah and Anchor Kutchhi Engineering College',
       field: 'Computer Science',
     },
     {
-      year: '2020',
-      degree: 'Advanced Web Development Certification',
-      school: 'Tech Academy',
-      field: 'Modern Web Technologies',
+      year: '2020-2022',
+      degree: 'HSC',
+      school: 'Ruia Junior College',
+      field: 'Science',
     },
   ];
 

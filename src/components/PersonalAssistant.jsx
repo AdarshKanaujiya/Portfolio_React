@@ -4,7 +4,7 @@ import { MessageCircle, X, Send, Bot, User, Minimize2, Maximize2 } from 'lucide-
 import './PersonalAssistant.css';
 
 const PersonalAssistant = () => {
-    console.log('🤖 Personal Assistant component rendering');
+    // console.log('🤖 Personal Assistant component rendering');
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [scrollY, setScrollY] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
@@ -24,10 +24,10 @@ const PersonalAssistant = () => {
   const [isHovering, setIsHovering] = useState(false);
 
   // Log mount for debugging
-  useEffect(() => {
-    console.log('🤖 Personal Assistant mounted and ready!');
-    return () => console.log('🤖 Personal Assistant unmounted');
-  }, []);
+  // useEffect(() => {
+  //   console.log('🤖 Personal Assistant mounted and ready!');
+  //   return () => console.log('🤖 Personal Assistant unmounted');
+  // }, []);
 
   // Smooth cursor following
   useEffect(() => {
@@ -160,7 +160,7 @@ const PersonalAssistant = () => {
     y: position.y + 20
   };
 
-  console.log('🎯 PersonalAssistant rendering with position:', assistantPosition);
+  // console.log('🎯 PersonalAssistant rendering with position:', assistantPosition);
 
   return (
     <>
@@ -195,15 +195,15 @@ const PersonalAssistant = () => {
           cursor: 'pointer'
         }}
         onMouseEnter={() => {
-          console.log('👆 Mouse entered assistant');
+          // console.log('👆 Mouse entered assistant');
           setIsHovering(true);
         }}
         onMouseLeave={() => {
-          console.log('👋 Mouse left assistant');
+          // console.log('👋 Mouse left assistant');
           setIsHovering(false);
         }}
         onClick={() => {
-          console.log('🖱️ Assistant clicked!');
+          // console.log('🖱️ Assistant clicked!');
           setIsOpen(true);
           setIsMinimized(false);
         }}

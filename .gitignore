@@ -4,7 +4,10 @@
 /node_modules
 /.pnp
 .pnp.js
-pacakage-lock.json
+package-lock.json
+yarn.lock
+/server/
+/useless/
 
 # testing
 /coverage

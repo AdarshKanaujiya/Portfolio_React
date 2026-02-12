@@ -76,7 +76,7 @@
   backdrop-filter: blur(10px);
   transition: opacity 0.3s ease;
   z-index: 2;
-  background: rgba(10, 10, 10, 0.7);
+  background: rgba(10, 10, 10, 0.55);
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -84,11 +84,32 @@
   opacity: 1;
 }
 
+.project-preview {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+.project-card:hover .project-preview {
+  opacity: 1;
+}
+
+.project-preview iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  pointer-events: none;
+}
+
 .overlay-content {
   text-align: center;
   padding: var(--spacing-lg);
   transform: translateY(20px);
   transition: transform 0.3s ease;
+  position: relative;
+  z-index: 2;
 }
 
 .project-card:hover .overlay-content {
