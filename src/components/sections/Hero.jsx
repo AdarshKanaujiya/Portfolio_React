@@ -49,6 +49,15 @@ const Hero = () => {
     },
   };
 
+  const handleNavClick = (e, href) => {
+    e.preventDefault();
+    const element = document.querySelector(href);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      // setIsMobileMenuOpen(false);
+    }
+  };
+
   const buttonVariants = {
     hidden: { opacity: 0, scale: 0.95 },
     visible: {
@@ -81,7 +90,7 @@ const Hero = () => {
         {/* Main Heading */}
         <motion.div className="hero-heading">
           <h1 className="hero-title">
-            <span className="typewriter heading-line-1 gradient-text">Creative Frontend & Backend</span>
+            <span className="typewriter heading-line-1 gradient-text">Frontend & Backend</span>
             <span className="typewriter heading-line-2 gradient-text">
               Full Stack Developer
             </span>
@@ -130,6 +139,7 @@ const Hero = () => {
             variants={buttonVariants}
             whileHover="hover"
             whileTap={{ scale: 0.95 }}
+            onClick={(e) => handleNavClick(e, '#projects')}
           >
             View My Work
             <svg
@@ -151,6 +161,7 @@ const Hero = () => {
             variants={buttonVariants}
             whileHover="hover"
             whileTap={{ scale: 0.95 }}
+            onClick={(e) => handleNavClick(e, '#contact')}
           >
             Get In Touch
           </motion.button>

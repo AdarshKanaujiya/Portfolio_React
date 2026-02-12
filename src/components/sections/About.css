@@ -151,14 +151,6 @@
     padding: var(--spacing-2xl) var(--spacing-md);
   }
 
-  .about-intro {
-    padding: 0 var(--spacing-md);
-  }
-
-  .intro-text {
-    font-size: 1rem;
-  }
-
   .about-content {
     gap: var(--spacing-2xl);
   }
@@ -177,11 +169,6 @@
   .timeline-content {
     margin-left: var(--spacing-lg);
   }
-
-  .timeline-item {
-    padding: var(--spacing-md);
-    gap: var(--spacing-md);
-  }
 }
 
 @media (max-width: 480px) {
@@ -194,20 +181,16 @@
   }
 
   .intro-text {
-    font-size: 0.95rem;
-    line-height: 1.6;
+    font-size: 1rem;
   }
 
   .timeline-title {
     font-size: 1.25rem;
-    margin-bottom: var(--spacing-lg);
   }
 
   .timeline-item {
     padding: var(--spacing-md);
-    gap: var(--spacing-md);
-    flex-direction: column;
-    text-align: center;
+    gap: var(--spacing-lg);
   }
 
   .timeline::before {
@@ -218,32 +201,5 @@
     width: 20px;
     height: 20px;
     left: -10px;
-  }
-
-  .timeline-marker {
-    position: static;
-    margin-bottom: var(--spacing-md);
-  }
-
-  .timeline-content {
-    margin-left: 0;
-  }
-
-  .timeline-year {
-    display: inline-block;
-    padding: 0.25rem 0.5rem;
-    font-size: 0.65rem;
-  }
-
-  .timeline-role {
-    font-size: 1rem;
-  }
-
-  .timeline-company {
-    font-size: 0.85rem;
-  }
-
-  .timeline-description {
-    font-size: 0.85rem;
   }
 }
