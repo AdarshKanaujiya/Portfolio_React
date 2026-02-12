@@ -1,12 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MessageCircle, X, Send, Bot, User, Minimize2, Maximize2 } from 'lucide-react';
+import { X, Send, Bot, User, Minimize2, Maximize2 } from 'lucide-react';
 import './PersonalAssistant.css';
 
 const PersonalAssistant = () => {
     // console.log('🤖 Personal Assistant component rendering');
   const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [scrollY, setScrollY] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
   const [isMinimized, setIsMinimized] = useState(true);
   const [messages, setMessages] = useState([
@@ -61,16 +60,6 @@ const PersonalAssistant = () => {
       window.removeEventListener('mousemove', handleMouseMove);
       cancelAnimationFrame(animationFrame);
     };
-  }, []);
-
-  // Track scroll
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const scrollToBottom = () => {
