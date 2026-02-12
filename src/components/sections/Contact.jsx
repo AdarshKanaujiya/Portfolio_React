@@ -55,7 +55,7 @@ const Contact = () => {
   const socialLinks = [
     {
       name: "GitHub",
-      icon: <FaGithub />,
+      icon: <FaGithub  size={60}/>,
       url: "https://github.com/AdarshKanaujiya",
     },
     {
@@ -255,6 +255,7 @@ const Contact = () => {
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
         >
+          {/* <FaGithub></FaGithub> */}
           {socialLinks.map((link, index) => (
             <motion.a
               key={index}

@@ -216,10 +216,11 @@
   transition: all 0.3s ease;
 }
 
-.social-link svg {
-  width: 20px;
-  height: 20px;
-}
+/* .social-link svg {
+  width: 30px;
+  height: 30px;
+  fill: var(--text-secondary);
+} */
 
 .social-link:hover {
   background: var(--accent-color);

@@ -36,7 +36,7 @@ const Footer = () => {
         <motion.div className="footer-content" variants={itemVariants}>
           <div className="footer-brand">
             <h3>Adarsh Kanaujiya</h3>
-            <p>Frontend Engineer & Motion Designer</p>
+            <p>Full Stack Developer</p>
           </div>
 
           <div className="footer-links">
@@ -55,7 +55,7 @@ const Footer = () => {
           </div>
         </motion.div>
 
-        <motion.div className="footer-divider" variants={itemVariants} />
+        {/* <motion.div className="footer-divider" variants={itemVariants} /> */}
 
         <motion.div className="footer-bottom" variants={itemVariants}>
           <p>© {currentYear} Adarsh Kanaujiya. All rights reserved.</p>

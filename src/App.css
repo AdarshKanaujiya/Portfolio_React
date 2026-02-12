@@ -229,15 +229,15 @@ body {
   display: flex;
   gap: 1rem;
   justify-content: center;
-  margin-top: 2rem;
+  margin-top: 1rem;
 }
 
 .social-links a {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 3rem;
-  height: 3rem;
+  width: 5rem;
+  height: 5rem;
   background: var(--bg-secondary);
   color: var(--text-secondary);
   border-radius: 50%;
