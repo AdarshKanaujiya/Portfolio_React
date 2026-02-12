@@ -190,6 +190,7 @@
   display: flex;
   gap: var(--spacing-md);
   justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
   margin-top: var(--spacing-lg);
 }
