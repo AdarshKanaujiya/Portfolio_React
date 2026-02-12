@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import "./LeetCode.css";
 
 const LEETCODE_USERNAME = "Adarsh_Kanaujiya";
-const LEETFETCH_API = process.env.REACT_APP_LEETCODE_API || "http://localhost:5000/leetcode";
+const LEETFETCH_API = process.env.REACT_APP || "http://localhost:5000/leetcode";
 
 const queries = {
   userPublicProfile: {
