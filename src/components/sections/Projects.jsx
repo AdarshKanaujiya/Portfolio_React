@@ -1,18 +1,13 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
 import ProjectModal from "../modals/ProjectModal";
 import { githubService } from "../../services/githubService";
 import "./Projects.css";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState(null);
   const [githubProjects, setGithubProjects] = useState([]);
   const [loadingGithub, setLoadingGithub] = useState(false);
-  const containerRef = useRef(null);
 
   // Fetch GitHub projects on mount
   useEffect(() => {
@@ -85,26 +80,8 @@ const Projects = () => {
     // Removed projects without live links
   ];
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      const cards = gsap.utils.toArray(".project-card");
-      cards.forEach((card, index) => {
-        gsap.from(card, {
-          scrollTrigger: {
-            trigger: card,
-            start: "top 80%",
-            markers: false,
-          },
-          opacity: 0,
-          y: 50,
-          duration: 0.6,
-          delay: index * 0.1,
-        });
-      });
-    }, containerRef);
-
-    return () => ctx.revert();
-  }, [githubProjects]);
+  // GSAP scroll animations removed to prevent conflict with Framer Motion
+  // Framer Motion whileInView handles all scroll animations
 
   // Logic: Use GitHub projects if loaded, otherwise fallback.
   // Filter ensures we ONLY show projects that have a 'live' link.
@@ -134,13 +111,13 @@ const Projects = () => {
 
   return (
     <>
-      <section className="projects-section" ref={containerRef}>
+      <section className="projects-section">
         <div className="container">
           <motion.div
             className="section-header"
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6 }}
           >
             <h2 className="section-title">Started Projects</h2>
@@ -160,7 +137,7 @@ const Projects = () => {
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, amount: 0.2 }}
           >
             {displayProjects.map((project, index) => (
               <motion.div

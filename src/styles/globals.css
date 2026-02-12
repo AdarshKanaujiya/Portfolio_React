@@ -14,6 +14,7 @@
   --text-secondary: #b8b8b8;
   --text-tertiary: #7a7a7a;
   --accent-color: #ff6b35;
+  --gradient-primary: linear-gradient(135deg, #ff6b35, #ff9e80);
   --accent-light: rgba(255, 107, 53, 0.1);
   --border-color: rgba(255, 255, 255, 0.1);
   --glass-bg: rgba(255, 255, 255, 0.05);

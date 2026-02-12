@@ -1,14 +1,12 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import gsap from 'gsap';
-import ScrollTrigger from 'gsap/ScrollTrigger';
 import './Skills.css';
-
-gsap.registerPlugin(ScrollTrigger);
+// import gsap from 'gsap';
+// import ScrollTrigger from 'gsap/ScrollTrigger';
+// gsap.registerPlugin(ScrollTrigger);
 
 const Skills = () => {
-  const containerRef = useRef(null);
-
+    // const containerRef = useRef(null);
   const skills = [
     { category: 'Frontend', items: ['React', 'TypeScript', 'Next.js', 'Framer Motion'] },
     { category: 'Styling', items: ['Tailwind CSS', 'CSS3', 'GSAP', 'Sass'] },
@@ -16,27 +14,29 @@ const Skills = () => {
     { category: 'Animation', items: ['GSAP', 'ScrollTrigger', 'Three.js', 'Canvas'] },
   ];
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      const cards = gsap.utils.toArray('.skill-card');
-      cards.forEach((card, index) => {
-        gsap.to(card, {
-          scrollTrigger: {
-            trigger: card,
-            start: 'top 80%',
-            end: 'top 20%',
-            scrub: 1,
-            markers: false,
-          },
-          opacity: 1,
-          y: 0,
-          duration: 0.6,
-        });
-      });
-    }, containerRef);
+  // GSAP scroll animations removed to prevent conflict with Framer Motion
+  // useEffect(() => {
+  //   const ctx = gsap.context(() => {
+  //     const cards = gsap.utils.toArray('.skill-card');
+  //     cards.forEach((card, index) => {
+  //       gsap.to(card, {
+  //         scrollTrigger: {
+  //           trigger: card,
+  //           start: 'top 80%',
+  //           end: 'top 20%',
+  //           scrub: 1,
+  //           markers: false,
+  //         },
+  //         opacity: 1,
+  //         y: 0,
+  //         duration: 0.6,
+  //       });
+  //     });
+  //   }, containerRef);
 
-    return () => ctx.revert();
-  }, []);
+  //   return () => ctx.revert();
+  // }, []);
+  // Framer Motion whileInView handles all scroll animations
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -73,13 +73,13 @@ const Skills = () => {
   };
 
   return (
-    <section className="skills-section" ref={containerRef}>
+    <section className="skills-section">    {/* ref={containerRef} */}
       <div className="container">
         <motion.div
           className="section-header"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-100px' }}
+          viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6 }}
         >
           <h2 className="section-title">Skills & Expertise</h2>
@@ -93,7 +93,7 @@ const Skills = () => {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: '-100px' }}
+          viewport={{ once: true, amount: 0.2 }}
         >
           {skills.map((skillGroup, groupIndex) => (
             <motion.div

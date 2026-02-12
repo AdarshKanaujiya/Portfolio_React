@@ -1,13 +1,13 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import gsap from 'gsap';
-import ScrollTrigger from 'gsap/ScrollTrigger';
+// import gsap from 'gsap';
+// import ScrollTrigger from 'gsap/ScrollTrigger';
 import './About.css';
 
-gsap.registerPlugin(ScrollTrigger);
+// gsap.registerPlugin(ScrollTrigger);
 
 const About = () => {
-  const sectionRef = useRef(null);
+  // const sectionRef = useRef(null);
 
   const experience = [
     {
@@ -45,29 +45,11 @@ const About = () => {
     },
   ];
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      const items = gsap.utils.toArray('.timeline-item');
-      items.forEach((item, index) => {
-        gsap.from(item, {
-          scrollTrigger: {
-            trigger: item,
-            start: 'top 80%',
-            markers: false,
-          },
-          opacity: 0,
-          x: index % 2 === 0 ? -50 : 50,
-          duration: 0.6,
-          delay: 0.1,
-        });
-      });
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
+  // GSAP scroll animations removed to prevent conflict with Framer Motion
+  // Framer Motion whileInView handles all scroll animations
 
   const containerVariants = {
-    hidden: { opacity: 0 },
+    hidden: { opacity: 1 },
     visible: {
       opacity: 1,
       transition: {
@@ -86,14 +68,14 @@ const About = () => {
   };
 
   return (
-    <section className="about-section" ref={sectionRef}>
+    <section className="about-section">
       <div className="container">
         {/* Intro */}
         <motion.div
           className="about-intro"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-100px' }}
+          viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6 }}
         >
           <h2 className="section-title">About Me</h2>
@@ -111,7 +93,7 @@ const About = () => {
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: '-100px' }}
+            viewport={{ once: true, amount: 0.2 }}
           >
             <h3 className="timeline-title">Experience</h3>
             <div className="timeline">
@@ -142,7 +124,7 @@ const About = () => {
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: '-100px' }}
+            viewport={{ once: true, amount: 0.2 }}
           >
             <h3 className="timeline-title">Education</h3>
             <div className="timeline">
